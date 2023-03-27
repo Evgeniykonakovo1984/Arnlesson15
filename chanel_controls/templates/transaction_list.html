@@ -1,0 +1,46 @@
+{% extends "base.HTML"%}
+{% block content %}
+    <h1>Transaction List</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Pay Address</th>
+            <th>Currency</th>
+            <th>USD Amount</th>
+            <th>Pay Amount</th>
+            <th>Paid</th>
+            <th>Payment ID</th>
+            <th>Order ID</th>
+            <th>Comment</th>
+            <th>Create At</th>
+            <th>Update At</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for transaction in transactions %}
+            <tr>
+                <td>{{transaction.id}}</td>
+                <td>{{transaction.user_id}}</td>
+                <td>{{transaction.pay_address}}</td>
+                <td>{{transaction.currency|upper}}</td>
+                <td>{{transaction.usd_amount|round(2)}}</td>
+                <td>{{transaction.pay_amount|round(6)}}</td>
+                <td>
+                    {% if transaction.paid %}
+                    <img src="{{static('images/checked.png')}}" alt="paid" style="width: 20px; height: 20px;">
+                    {% else %}
+                    <img src="{{static('images/not_checked.png')}}" alt="paid" style="width: 20px; height: 20px;">
+                    {% endif %}
+                </td>
+                <td>{{transaction.payment_id}}</td>
+                <td>{{transaction.order_id}}</td>
+                <td>{{transaction.comment}}</td>
+                <td>{{transaction.create_at}}</td>
+                <td>{{transaction.update_at}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
