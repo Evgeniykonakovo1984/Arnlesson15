@@ -3,6 +3,6 @@
     <h1>Главная страница</h1>
     {% for paidcontent in paidcontents %}
         <a href={{paidcontent.url}}>{{paidcontent.content_name}}</a><br>
-        <p>{{paidcontent.content_HTML}}</p>
+        <p>{{paidcontent.content_HTML|safe}}</p>
     {% endfor %}
 {% endblock %}
